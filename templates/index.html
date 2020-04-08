@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2 align="center">Works log</h2>
+<a href="/departments" class="btn btn-secondary">К списку департаментов</a>
+{% if current_user.is_authenticated %}
+        <a href="/add_job" class="btn btn-secondary">Добавить работу</a>
+{% endif %}
+{% for item in jobs%}
+    {% set name = 'None'%}
+    {% set sur = 'None'%}
+    {% for us in users%}
+        {% if us.id == item.team_leader or us.id == 1%}
+            {% set name = us.name%}
+            {% set sur = us.surname%}
+            <h3>Action # {{item.id}}</h3>
+            <table border="1">
+               <tr>
+                <th bgcolor="#CCCCCC">Title of activity</th>
+                <th bgcolor="#CCCCCC">Team leader</th>
+                <th bgcolor="#CCCCCC">Duration</th>
+                <th bgcolor="#CCCCCC">List of colls</th>
+                <th bgcolor="#CCCCCC">Hazard category</th>
+                <th bgcolor="#CCCCCC">Is finished</th>
+               </tr>
+               <tr>
+                <td>{{item.job}}</td>
+                <td>{{sur}} {{name}}</td>
+                <td>{{item.work_size}}</td>
+                <td>{{item.collaborators}}</td>
+                <td>{{item.categories[0].id}}</td>
+                <td>{{item.is_finished}}</td>
+              </tr>
+             </table>
+            {% if current_user.is_authenticated and (current_user.id == item.team_leader or current_user.id == 1) %}
+                <div>
+                    <a href="/edit_job/{{ item.id }}" class="btn btn-warning">Изменить</a>
+                    <a href="/job_delete/{{ item.id }}" class="btn btn-danger">Удалить</a>
+                </div>
+            {% endif %}
+        {% endif %}
+    {% endfor %}
+{% endfor %}
+{% endblock %}

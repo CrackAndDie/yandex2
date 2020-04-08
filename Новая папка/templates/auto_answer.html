@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block css %}
+    {% set a = url_for('static', filename='css/style.css') %}
+    <link rel="stylesheet" type="text/css" href={{a}} />
+{% endblock %}
+
+{% block title %}
+    title["title"]
+{% endblock %}
+
+{% block content %}
+    <h4>Фамилия: {{title["surname"]}}</h4>
+    <h4>Имя: {{title["name"]}}</h4>
+    <h4>Образование: {{title["education"]}}</h4>
+    <h4>Профессия: {{title["profession"]}}</h4>
+    <h4>Пол: {{title["sex"]}}</h4>
+    <h4>Мотивация: {{title["motivation"]}}</h4>
+    <h4>Готовы остаться на Марсе? {{title["ready"]}}</h4>
+{% endblock %}

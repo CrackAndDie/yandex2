@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block css %}
+    {% set a = url_for('static', filename='css/style.css') %}
+    <link rel="stylesheet" type="text/css" href={{a}} />
+{% endblock %}
+
+{% block content %}
+    {% set const = 'Каюта №' %}
+    <div id="tit">
+        <h3>Размещение по каютам</h3>
+    </div>
+    <div id="for_l">
+        {% for user in title %}
+            <h6 id="for_l_el">{{ user }} - {{const}} {{ loop.index }} {% if loop.first %} - капитан корабля{% endif %}</h6>
+        {% endfor %}
+    </div>
+{% endblock %}

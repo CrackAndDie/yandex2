@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+
+{% block css %}
+    {% set a = url_for('static', filename='css/style.css') %}
+    <link rel="stylesheet" type="text/css" href={{a}} />
+{% endblock %}
+
+{% block content %}
+{% set lis = ['mars.jpg', 'mars2.jpg']%}
+<div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+  <div class="carousel-inner">
+      {% for p in lis%}
+        {% set tmp = url_for('static', filename='img/{0}'.format(p)) %}
+        {% set tmp2 = "carousel-item" %}
+        {% if loop.first %}
+            {% set tmp2 = "carousel-item active" %}
+        {%endif%}
+        <div class={{tmp2}}>
+            <img class="d-block w-100" src={{tmp}} alt={{loop.index}}>
+        </div>
+      {% endfor %}
+  </div>
+</div>
+
+<form action="" method="post" novalidate>
+    {{ form.hidden_tag() }}
+    <br><br><p>{{ form.photo_l(type="file", class="form-control-file", id="photo") }}</p>
+    <p>{{ form.submit(type="submit", class="btn btn-primary") }}</p>
+</form>
+{% endblock %}

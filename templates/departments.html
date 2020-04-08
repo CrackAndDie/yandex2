@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2 align="center">Departments log</h2>
+<a href="/" class="btn btn-secondary">К списку работ</a>
+{% if current_user.is_authenticated %}
+        <a href="/add_dep" class="btn btn-secondary">Добавить департамент</a>
+{% endif %}
+{% for item in deps%}
+    {% set name = 'None'%}
+    {% set sur = 'None'%}
+    {% for us in users%}
+        {% if us.id == item.chief%}
+            {% set name = us.name%}
+            {% set sur = us.surname%}
+            <h3>Action # {{item.id}}</h3>
+            <table border="1">
+               <tr>
+                <th bgcolor="#CCCCCC">Title of department</th>
+                <th bgcolor="#CCCCCC">Chief</th>
+                <th bgcolor="#CCCCCC">Members</th>
+                <th bgcolor="#CCCCCC">Department Email</th>
+               </tr>
+               <tr>
+                <td>{{item.title}}</td>
+                <td>{{sur}} {{name}}</td>
+                <td>{{item.members}}</td>
+                <td>{{item.email}}</td>
+              </tr>
+             </table>
+            {% if current_user.is_authenticated and (current_user.id == item.chief or current_user.id == 1) %}
+                <div>
+                    <a href="/edit_dep/{{ item.id }}" class="btn btn-warning">Изменить</a>
+                    <a href="/dep_delete/{{ item.id }}" class="btn btn-danger">Удалить</a>
+                </div>
+            {% endif %}
+        {% endif %}
+    {% endfor %}
+{% endfor %}
+{% endblock %}

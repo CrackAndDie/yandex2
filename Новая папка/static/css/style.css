@@ -1,0 +1,23 @@
+h4 {
+    margin-left: 20px;
+    color: gray;
+}
+#tit {
+    margin-left: 70px;
+}
+#for_l {
+    margin-left: 1px;
+    margin-top: 20px;
+}
+#for_l_el {
+    margin-top: 15px;
+}
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 60%;
+}
+#table {
+    margin-left: 100px;
+}

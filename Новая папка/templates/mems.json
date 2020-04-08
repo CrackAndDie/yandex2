@@ -1,0 +1,16 @@
+{
+  "Members": [
+    {"name": "Oleg",
+    "surname": "Ivanov",
+    "url": "cat.jpg",
+    "prof": ["археолог", "программист", "водитель"]},
+    {"name": "Vika",
+    "surname": "Perefanova",
+    "url": "small.png",
+    "prof": ["компьютерщик", "программист", "спец по радиации"]},
+    {"name": "Ivan",
+    "surname": "Petrov",
+    "url": "big.png",
+    "prof": ["компьютерщик", "диванный эксперт", "инопланетянин"]}
+  ]
+}

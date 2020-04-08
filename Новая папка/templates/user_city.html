@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block css %}
+    {% set a = url_for('static', filename='css/style.css') %}
+    <link rel="stylesheet" type="text/css" href={{a}} />
+{% endblock %}
+
+{% block content %}
+<h2 align="center">Nostalgia</h2>
+<h2 align="center">{{nas}}</h2>
+<h5 align="center">Hometown {{town}}</h5>
+{% set g_u = url_for('static', filename='img/{0}'.format(city)) %}
+<img src={{g_u}} alt="здесь должна была быть картинка, но не нашлась" class="center">
+{% endblock %}

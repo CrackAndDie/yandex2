@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block css %}
+    {% set a = url_for('static', filename='css/style.css') %}
+    <link rel="stylesheet" type="text/css" href={{a}} />
+{% endblock %}
+
+{% block title %}
+    Members
+{% endblock %}
+
+{% block content %}
+    <h3 align="center">{{name}} {{surname}}</h3>
+    {% set g_u = url_for('static', filename='img/{0}'.format(url)) %}
+    <img src={{g_u}} alt="здесь должна была быть картинка, но не нашлась" class="center">
+    {% set lis = ', '.join(prof)%}
+    <h5 align="center">{{lis}}</h5>
+{% endblock %}

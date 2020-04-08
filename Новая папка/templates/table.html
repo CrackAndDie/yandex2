@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+
+{% block css %}
+    {% set a = url_for('static', filename='css/style.css') %}
+    <link rel="stylesheet" type="text/css" href={{a}} />
+{% endblock %}
+
+{% block content %}
+    {% set g = 'pink'%}
+    {% set a = 'small'%}
+     {% if age >= 21 %}
+            {% set a = 'big'%}
+            {% if gena == 'female' %}
+                {% set g = 'red'%}
+            {% else %}
+                {% set g = 'dark_blue'%}
+            {% endif %}
+     {% else %}
+           {% set a = 'small'%}
+            {% if gena == 'female' %}
+                {% set g = 'pink'%}
+            {% else %}
+                {% set g = 'blue'%}
+            {% endif %}
+     {% endif %}
+    {% set g_u = url_for('static', filename='img/{0}.jpg'.format(g)) %}
+    {% set a_u = url_for('static', filename='img/{0}.png'.format(a)) %}
+    <div id="table">
+        <h2>Оформление каюты</h2>
+    </div>
+    <table border="1">
+       <tr>
+        <th bgcolor="#CCCCCC">Цвет стен</th>
+        <th bgcolor="#CCCCCC">Эмблема</th>
+       </tr>
+       <tr>
+        <td><img src={{g_u}} alt="здесь должна была быть картинка, но не нашлась"></td>
+        <td><img src={{a_u}} alt="здесь должна была быть картинка, но не нашлась"></td>
+      </tr>
+     </table>
+{% endblock %}
